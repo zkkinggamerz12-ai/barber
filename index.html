@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10100f">
+  <meta name="description" content="Maytham Mobile Barber brings Houston's VIP grooming experience to your home, office, hotel, or event. Book your private appointment.">
+  <title>Maytham Mobile Barber — Houston's VIP Barber</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #10100f;
+      --ink-soft: #171715;
+      --paper: #e8e3d8;
+      --muted: #9c9b95;
+      --gold: #c6a66a;
+      --gold-light: #e1c891;
+      --line: rgba(232, 227, 216, .15);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--ink); }
+    body { margin: 0; background: var(--ink); color: var(--paper); font-family: var(--sans); font-size: 15px; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { background: var(--gold); color: var(--ink); }
+
+    .site-header { position: absolute; z-index: 20; top: 0; left: 0; width: 100%; padding: 27px 5.2vw; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(232,227,216,.18); }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark { width: 31px; height: 31px; border: 1px solid var(--gold); display: grid; place-items: center; color: var(--gold-light); font: 16px var(--serif); }
+    .brand-name { font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; line-height: 1.5; }
+    .brand-name span { display: block; color: var(--muted); font-size: 8px; letter-spacing: .22em; }
+    .nav-links { display: flex; align-items: center; gap: clamp(22px, 3.2vw, 52px); }
+    .nav-links a:not(.nav-book) { font-size: 10px; text-transform: uppercase; letter-spacing: .16em; color: rgba(232,227,216,.72); transition: color .25s ease; }
+    .nav-links a:not(.nav-book):hover { color: var(--gold-light); }
+    .nav-book { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 21px; border: 1px solid rgba(198,166,106,.7); color: var(--gold-light); font-size: 9px; text-transform: uppercase; letter-spacing: .17em; transition: background .3s ease, color .3s ease; }
+    .nav-book:hover { background: var(--gold); color: var(--ink); }
+    .menu-button { display: none; width: 42px; height: 42px; border: 1px solid var(--line); background: transparent; color: var(--paper); font-size: 19px; }
+
+    .hero-scroll { height: 190svh; min-height: 980px; position: relative; }
+    .hero-frame { height: 100svh; min-height: 600px; position: sticky; top: 0; overflow: hidden; background: #171715 url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=2400&q=88') center 43% / cover no-repeat; }
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 44%; opacity: .73; filter: saturate(.72) contrast(1.05); }
+    .hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,10,9,.84) 0%, rgba(10,10,9,.56) 43%, rgba(10,10,9,.12) 100%), linear-gradient(0deg, rgba(10,10,9,.76), transparent 49%, rgba(10,10,9,.34)); }
+    .hero-content { position: absolute; inset: 0; padding: 0 10.4vw 7.5vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; color: var(--gold-light); font-size: 9px; text-transform: uppercase; letter-spacing: .25em; font-weight: 600; }
+    .eyebrow::before { content: ''; display: block; width: 31px; height: 1px; background: var(--gold); }
+    .hero-title { max-width: 860px; margin: 27px 0 22px; font: 400 clamp(58px, 8.3vw, 124px)/.99 var(--serif); letter-spacing: 0; }
+    .hero-title em { color: var(--gold-light); font-weight: 400; }
+    .hero-copy { max-width: 405px; color: rgba(232,227,216,.76); font-size: 13px; line-height: 1.9; }
+    .hero-actions { display: flex; align-items: center; gap: 29px; margin-top: 32px; }
+    .button-gold { min-height: 53px; padding: 0 26px; display: inline-flex; align-items: center; justify-content: center; gap: 24px; background: var(--gold); color: var(--ink); font-size: 9px; text-transform: uppercase; letter-spacing: .17em; font-weight: 700; border: 1px solid var(--gold); transition: background .25s, color .25s; }
+    .button-gold:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .button-gold .arrow { font-size: 15px; line-height: 1; }
+    .hero-phone { color: rgba(232,227,216,.8); font-size: 11px; letter-spacing: .07em; }
+    .hero-foot { position: absolute; left: 5.2vw; right: 5.2vw; bottom: 30px; display: flex; justify-content: space-between; align-items: center; color: rgba(232,227,216,.58); font-size: 8px; text-transform: uppercase; letter-spacing: .2em; }
+    .scroll-cue { display: flex; align-items: center; gap: 12px; }
+    .scroll-cue::after { content: ''; width: 50px; height: 1px; background: var(--gold); transform-origin: left; }
+    .hero-index { color: var(--gold-light); }
+
+    .section-pad { padding: clamp(92px, 12vw, 174px) 10.4vw; }
+    .about { display: grid; grid-template-columns: minmax(0, .9fr) minmax(320px, .7fr); gap: 10vw; align-items: center; position: relative; overflow: hidden; }
+    .about::before { content: 'M'; position: absolute; right: -2vw; top: 2%; font: 400 39vw/.8 var(--serif); color: rgba(232,227,216,.018); pointer-events: none; }
+    .section-kicker { color: var(--gold); font-size: 9px; text-transform: uppercase; letter-spacing: .25em; font-weight: 600; }
+    .section-title { margin: 24px 0 27px; font: 400 clamp(43px, 5vw, 72px)/1.08 var(--serif); letter-spacing: 0; }
+    .section-title em { color: var(--gold-light); font-weight: 400; }
+    .about-copy { max-width: 495px; color: var(--muted); font-size: 13px; line-height: 2; }
+    .text-link { margin-top: 33px; display: inline-flex; gap: 16px; align-items: center; color: var(--gold-light); font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: .18em; }
+    .text-link span { font-size: 16px; transition: transform .25s ease; }
+    .text-link:hover span { transform: translateX(5px); }
+    .about-visual { position: relative; min-height: 430px; height: min(43vw, 570px); background: #252522 url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1200&q=85') center / cover no-repeat; }
+    .about-visual::before { content: ''; position: absolute; inset: 13px -13px -13px 13px; border: 1px solid rgba(198,166,106,.55); pointer-events: none; }
+    .visual-caption { position: absolute; left: -48px; bottom: 29px; writing-mode: vertical-rl; transform: rotate(180deg); color: var(--gold-light); font-size: 8px; letter-spacing: .24em; text-transform: uppercase; }
+    .about-note { position: absolute; bottom: 30px; left: 28px; color: rgba(255,255,255,.82); font: 18px var(--serif); text-shadow: 0 1px 14px #000; }
+
+    .services { padding: 105px 10.4vw 125px; background: var(--ink-soft); }
+    .services-top { display: flex; align-items: end; justify-content: space-between; gap: 36px; margin-bottom: 48px; }
+    .services-top .section-title { margin-bottom: 0; }
+    .services-intro { max-width: 300px; margin-bottom: 5px; color: var(--muted); font-size: 12px; line-height: 1.9; }
+    .service-list { border-top: 1px solid var(--line); }
+    .service-row { min-height: 95px; display: grid; grid-template-columns: 67px 1fr auto 26px; align-items: center; gap: 18px; border-bottom: 1px solid var(--line); transition: padding .35s ease, background .35s ease; }
+    .service-row:hover { padding-left: 13px; background: rgba(198,166,106,.035); }
+    .service-num { color: var(--gold); font: 17px var(--serif); }
+    .service-name { font: 400 clamp(21px, 2.4vw, 33px) var(--serif); }
+    .service-detail { color: var(--muted); font-size: 10px; letter-spacing: .04em; }
+    .service-arrow { color: var(--gold); font-size: 17px; }
+    .services-foot { margin-top: 31px; color: var(--muted); font-size: 10px; letter-spacing: .03em; }
+
+    .proof { padding: 96px 10.4vw; display: grid; grid-template-columns: 1fr 1fr; gap: 9vw; align-items: center; border-bottom: 1px solid var(--line); }
+    .rating { display: flex; align-items: center; gap: 20px; }
+    .rating-score { font: 400 clamp(66px, 9vw, 120px)/.9 var(--serif); color: var(--gold-light); }
+    .rating-meta { display: flex; flex-direction: column; gap: 9px; }
+    .stars { color: var(--gold); letter-spacing: .17em; font-size: 13px; }
+    .rating-meta span:last-child { color: var(--muted); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .proof-copy { border-left: 1px solid rgba(198,166,106,.4); padding-left: 39px; color: var(--muted); font: 19px/1.65 var(--serif); }
+    .proof-copy strong { color: var(--paper); font-weight: 400; }
+
+    .location { padding-top: 120px; padding-bottom: 130px; display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; align-items: center; }
+    .location .section-title { max-width: 480px; }
+    .address { margin: 0 0 13px; color: var(--paper); font: 20px/1.6 var(--serif); }
+    .location-detail { color: var(--muted); font-size: 11px; line-height: 1.9; }
+    .map-panel { min-height: 330px; position: relative; overflow: hidden; background: #1b1b19; border: 1px solid var(--line); display: grid; place-items: center; isolation: isolate; }
+    .map-panel::before, .map-panel::after { content: ''; position: absolute; z-index: -1; width: 140%; height: 1px; background: rgba(232,227,216,.11); transform: rotate(-31deg); }
+    .map-panel::after { transform: rotate(31deg); }
+    .map-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(232,227,216,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(232,227,216,.035) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(transparent, black 18%, black 82%, transparent); }
+    .map-label { position: absolute; color: rgba(232,227,216,.37); font-size: 8px; text-transform: uppercase; letter-spacing: .16em; }
+    .map-label.one { left: 14%; top: 24%; }
+    .map-label.two { right: 12%; top: 35%; }
+    .map-label.three { left: 21%; bottom: 20%; }
+    .map-pin { width: 50px; height: 50px; border: 1px solid var(--gold); border-radius: 50%; display: grid; place-items: center; color: var(--gold-light); background: rgba(16,16,15,.8); box-shadow: 0 0 0 11px rgba(198,166,106,.09), 0 0 0 25px rgba(198,166,106,.04); }
+    .map-pin svg { width: 18px; height: 18px; }
+    .map-caption { position: absolute; left: 21px; bottom: 18px; color: var(--muted); font-size: 8px; text-transform: uppercase; letter-spacing: .14em; }
+
+    .final-cta { min-height: 560px; padding: 110px 7vw; position: relative; overflow: hidden; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #181815 url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=2000&q=85') center 43% / cover no-repeat; }
+    .final-cta::before { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(12,12,11,.91), rgba(12,12,11,.77)); }
+    .final-cta > * { position: relative; }
+    .final-cta .section-title { max-width: 850px; margin: 25px 0 22px; font-size: clamp(47px, 6.7vw, 92px); }
+    .final-cta p { max-width: 390px; margin: 0 0 28px; color: rgba(232,227,216,.7); font-size: 12px; line-height: 1.8; }
+    .cta-phone { margin-top: 23px; color: var(--gold-light); font: 20px var(--serif); letter-spacing: .06em; }
+
+    .footer { padding: 27px 5.2vw; display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
+    .footer a { color: var(--paper); }
+    .footer-social { display: flex; gap: 27px; }
+
+    .reveal { opacity: 0; transform: translateY(28px); }
+    .split-line { overflow: hidden; }
+    .split-line > span { display: inline-block; }
+
+    @media (max-width: 760px) {
+      .site-header { padding: 19px 6vw; }
+      .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; padding: 22px 6vw 26px; flex-direction: column; align-items: stretch; gap: 21px; background: rgba(16,16,15,.97); border-bottom: 1px solid var(--line); }
+      .nav-links.open { display: flex; }
+      .nav-links a:not(.nav-book) { font-size: 11px; }
+      .nav-book { align-self: flex-start; }
+      .menu-button { display: grid; place-items: center; }
+      .hero-scroll { height: 155svh; min-height: 850px; }
+      .hero-frame { min-height: 540px; }
+      .hero-video { object-position: 58% center; }
+      .hero-shade { background: linear-gradient(90deg, rgba(10,10,9,.8), rgba(10,10,9,.33)), linear-gradient(0deg, rgba(10,10,9,.72), transparent 48%, rgba(10,10,9,.35)); }
+      .hero-content { padding: 60px 7vw 70px; justify-content: center; }
+      .hero-title { font-size: clamp(54px, 13vw, 88px); }
+      .hero-copy { max-width: 325px; font-size: 12px; }
+      .hero-actions { align-items: flex-start; flex-direction: column; gap: 18px; margin-top: 26px; }
+      .hero-foot { left: 7vw; right: 7vw; bottom: 20px; }
+      .section-pad { padding: 88px 8vw; }
+      .about { grid-template-columns: 1fr; gap: 52px; }
+      .about-visual { min-height: 360px; height: 88vw; max-height: 490px; margin-right: 13px; }
+      .visual-caption { left: -26px; }
+      .services { padding: 85px 8vw 95px; }
+      .services-top { display: block; margin-bottom: 35px; }
+      .services-intro { margin-top: 20px; }
+      .service-row { min-height: 83px; grid-template-columns: 34px 1fr 18px; gap: 10px; }
+      .service-detail { display: none; }
+      .proof { padding: 78px 8vw; grid-template-columns: 1fr; gap: 32px; }
+      .proof-copy { font-size: 17px; padding-left: 22px; }
+      .location { padding-top: 90px; padding-bottom: 95px; grid-template-columns: 1fr; gap: 45px; }
+      .map-panel { min-height: 275px; }
+      .final-cta { min-height: 520px; padding: 85px 8vw; }
+      .footer { padding: 23px 7vw; align-items: flex-start; gap: 18px; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Maytham Mobile Barber home">
+      <span class="brand-mark">M</span>
+      <span class="brand-name">Maytham<span>Mobile Barber · Houston</span></span>
+    </a>
+    <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false">+</button>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#experience">Experience</a>
+      <a href="#services">Services</a>
+      <a href="#location">Location</a>
+      <a class="nav-book magnetic" href="tel:+12818572426">Book an appointment</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-scroll" id="top" aria-label="Houston's VIP Mobile Barber">
+      <div class="hero-frame">
+        <video class="hero-video" muted playsinline preload="metadata" poster="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=2400&q=88" aria-hidden="true">
+          <source src="https://videos.pexels.com/video-files/7686519/7686519-hd_1920_1080_24fps.mp4" type="video/mp4">
+        </video>
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <div class="eyebrow hero-reveal">Houston · Private grooming</div>
+          <h1 class="hero-title hero-reveal">Houston’s <em>VIP</em><br>Mobile Barber</h1>
+          <p class="hero-copy hero-reveal">A sharper standard of grooming, brought to your door. Considered craft, personal service, and your time kept entirely your own.</p>
+          <div class="hero-actions hero-reveal">
+            <a class="button-gold magnetic" href="tel:+12818572426">Book your visit <span class="arrow">↗</span></a>
+            <a class="hero-phone" href="tel:+12818572426">+1 281 857 2426</a>
+          </div>
+        </div>
+        <div class="hero-foot"><span class="scroll-cue">Scroll to experience</span><span class="hero-index">01 / 06</span></div>
+      </div>
+    </section>
+
+    <section class="about section-pad" id="experience">
+      <div class="about-copy-block">
+        <div class="section-kicker reveal">A more personal ritual</div>
+        <h2 class="section-title reveal">The best chair<br>is <em>where you are.</em></h2>
+        <p class="about-copy reveal">Your home, office, hotel, or event. Maytham brings the focus and finish of a private barber studio to the place that works for you. No waiting room, no rush. Just thoughtful, one-to-one service, on your time.</p>
+        <a class="text-link reveal" href="tel:+12818572426">Make it personal <span>→</span></a>
+      </div>
+      <div class="about-visual reveal" role="img" aria-label="A barber's hands carefully shaping a client's haircut">
+        <span class="visual-caption">Houston, Texas · By appointment</span>
+        <span class="about-note">Made around you.</span>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="services-top">
+        <div>
+          <div class="section-kicker reveal">The details matter</div>
+          <h2 class="section-title reveal">A considered<br><em>cut.</em></h2>
+        </div>
+        <p class="services-intro reveal">Every service is shaped around you, with precision, good conversation, and a finish that feels like yours.</p>
+      </div>
+      <div class="service-list">
+        <a class="service-row reveal" href="tel:+12818572426"><span class="service-num">01</span><span class="service-name">Precision haircut</span><span class="service-detail">Tailored to your style</span><span class="service-arrow">↗</span></a>
+        <a class="service-row reveal" href="tel:+12818572426"><span class="service-num">02</span><span class="service-name">Fades &amp; tapers</span><span class="service-detail">Clean lines, seamless blend</span><span class="service-arrow">↗</span></a>
+        <a class="service-row reveal" href="tel:+12818572426"><span class="service-num">03</span><span class="service-name">Beard sculpting</span><span class="service-detail">Shape, detail, definition</span><span class="service-arrow">↗</span></a>
+        <a class="service-row reveal" href="tel:+12818572426"><span class="service-num">04</span><span class="service-name">Hot towel shave</span><span class="service-detail">A slower kind of luxury</span><span class="service-arrow">↗</span></a>
+        <a class="service-row reveal" href="tel:+12818572426"><span class="service-num">05</span><span class="service-name">VIP grooming</span><span class="service-detail">Adults &amp; kids · By request</span><span class="service-arrow">↗</span></a>
+      </div>
+      <p class="services-foot reveal">For a personal recommendation or package details, call to book.</p>
+    </section>
+
+    <section class="proof" aria-label="Client rating and reviews">
+      <div class="rating reveal"><span class="rating-score">5.0</span><span class="rating-meta"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><span>Client rating</span></span></div>
+      <p class="proof-copy reveal"><strong>Hundreds of five-star experiences.</strong><br>Premium quality is a promise. Convenience is part of it.</p>
+    </section>
+
+    <section class="location section-pad" id="location">
+      <div>
+        <div class="section-kicker reveal">Rooted in Houston</div>
+        <h2 class="section-title reveal">In the city.<br><em>On your terms.</em></h2>
+        <p class="address reveal">PFMH+2J Mid West<br>Houston, TX, USA</p>
+        <p class="location-detail reveal">Serving Houston and surrounding neighborhoods.<br>Mobile appointments are arranged around your location.</p>
+        <a class="text-link reveal" href="https://maps.google.com/?q=PFMH%2B2J+Mid+West,+Houston,+TX,+USA" target="_blank" rel="noreferrer">View directions <span>↗</span></a>
+      </div>
+      <a class="map-panel reveal" href="https://maps.google.com/?q=PFMH%2B2J+Mid+West,+Houston,+TX,+USA" target="_blank" rel="noreferrer" aria-label="Open directions to PFMH+2J Mid West, Houston, TX">
+        <span class="map-grid"></span><span class="map-label one">Mid West</span><span class="map-label two">Houston, TX</span><span class="map-label three">Texas</span>
+        <span class="map-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+        <span class="map-caption">PFMH+2J Mid West · Houston, TX</span>
+      </a>
+    </section>
+
+    <section class="final-cta" id="book">
+      <div class="section-kicker reveal">Your time. Your place.</div>
+      <h2 class="section-title reveal">A better barber<br><em>comes to you.</em></h2>
+      <p class="reveal">Make room for a little more ease in your day. Your next appointment is one conversation away.</p>
+      <a class="button-gold magnetic reveal" href="tel:+12818572426">Call to book <span class="arrow">↗</span></a>
+      <a class="cta-phone reveal" href="tel:+12818572426">+1 281 857 2426</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Maytham Mobile Barber · Houston, TX</span>
+    <span class="footer-social"><a href="tel:+12818572426">Call Maytham</a><a href="#top">Back to top ↑</a></span>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    (() => {
+      const menuButton = document.querySelector('.menu-button');
+      const nav = document.querySelector('.nav-links');
+      menuButton.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+        menuButton.textContent = isOpen ? '×' : '+';
+      });
+      nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation');
+        menuButton.textContent = '+';
+      }));
+
+      const video = document.querySelector('.hero-video');
+      const hero = document.querySelector('.hero-scroll');
+      const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const startHero = () => {
+        if (!window.gsap || !window.ScrollTrigger || motionPreference) {
+          document.querySelectorAll('.reveal, .hero-reveal').forEach((element) => {
+            element.style.opacity = '1';
+            element.style.transform = 'none';
+          });
+          return;
+        }
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from('.hero-reveal', { y: 30, opacity: 0, duration: 1.1, stagger: .13, ease: 'power3.out', delay: .25 });
+
+        const scrubVideo = () => {
+          if (!Number.isFinite(video.duration) || video.duration <= 0) return;
+          gsap.to(video, {
+            currentTime: video.duration,
+            ease: 'none',
+            scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom bottom', scrub: 0.6 }
+          });
+        };
+        if (video.readyState >= 1) scrubVideo();
+        else video.addEventListener('loadedmetadata', scrubVideo, { once: true });
+        video.addEventListener('error', () => { video.style.display = 'none'; }, { once: true });
+
+        gsap.utils.toArray('.reveal').forEach((element) => {
+          gsap.fromTo(element, { y: 28, opacity: 0 }, {
+            y: 0, opacity: 1, duration: .85, ease: 'power2.out',
+            scrollTrigger: { trigger: element, start: 'top 88%', once: true }
+          });
+        });
+        gsap.to('.about-visual', {
+          yPercent: -7, ease: 'none',
+          scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: true }
+        });
+        gsap.to('.hero-title', {
+          yPercent: -16, ease: 'none',
+          scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom bottom', scrub: true }
+        });
+
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+          document.querySelectorAll('.magnetic').forEach((element) => {
+            element.addEventListener('pointermove', (event) => {
+              const bounds = element.getBoundingClientRect();
+              const x = event.clientX - bounds.left - bounds.width / 2;
+              const y = event.clientY - bounds.top - bounds.height / 2;
+              gsap.to(element, { x: x * .12, y: y * .18, duration: .35, ease: 'power2.out' });
+            });
+            element.addEventListener('pointerleave', () => gsap.to(element, { x: 0, y: 0, duration: .55, ease: 'elastic.out(1, .4)' }));
+          });
+        }
+        ScrollTrigger.refresh();
+      };
+
+      if (document.readyState === 'complete') startHero();
+      else window.addEventListener('load', startHero, { once: true });
+    })();
+  </script>
+</body>
+</html>
